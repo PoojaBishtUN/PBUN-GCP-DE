@@ -1,6 +1,5 @@
 provider "google" {
-  region = "asia-south2"
-  project = "de-gcp-201"  
+  region = "asia-south2" 
 }
 
 
