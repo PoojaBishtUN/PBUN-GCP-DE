@@ -81,7 +81,7 @@ resource "google_composer_environment" "my_composer_env" {
   name    = "de-airflow-test"
   #project = google_project.new_project.project_id  # Reference the new project ID
   project = "de-gcp-201" 
-  role    = "roles/composer.admin"
+  
 
   config {
     node_count = 3
