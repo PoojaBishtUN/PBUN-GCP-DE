@@ -86,6 +86,11 @@ resource "google_project_iam_member" "composer_service_agent" {
   member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
 }
 
+resource "google_project_iam_member" "composer_service_agent_permissions" {
+  project = "de-gcp-201"
+  role    = "roles/iam.serviceAccountAdmin"
+  member  = "serviceAccount:service-1075568351319@cloudcomposer-accounts.iam.gserviceaccount.com"  # Cloud Composer Service Agent
+}
 
 
 # Create Cloud Composer environment
