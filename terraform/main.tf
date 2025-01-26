@@ -25,13 +25,11 @@ resource "google_bigquery_dataset" "my_dataset" {
 }
 
 resource "google_composer_environment" "my_composer_env" {
-  name   = "de-airflow-test
+  name   = "de-airflow-test"
   region = "asia-south2"
 
   config {
     node_count = 1
-    software_config {
-      image_version = "composer-2.0.0-airflow-2.1.0"
-    }
+    software_config {image_version = "composer-2.0.0-airflow-2.1.0"}
   }
 }
