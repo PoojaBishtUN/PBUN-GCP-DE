@@ -39,7 +39,6 @@ resource "google_project_service" "enabled_apis" {
   for_each = toset([
     "bigquery.googleapis.com",          # BigQuery API
     "composer.googleapis.com",          # Cloud Composer API
-    "composer.googleapis.com",          # Composer API
     "storage.googleapis.com",           # Cloud Storage API
     "iam.googleapis.com",               # IAM API
     "cloudresourcemanager.googleapis.com" # Resource Manager API
