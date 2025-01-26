@@ -33,7 +33,7 @@ resource "google_storage_bucket" "new_bkt_tstst" {
   name     = "des-gcp-201"
   location = "US"
  # project  = google_project.new_project.project_id  # Reference the new project ID
-  project = "de-gcp-201" 
+  project = "des-gcp-201" 
 }
 
 # Create a service account in the new project
@@ -41,7 +41,7 @@ resource "google_service_account" "new_sa_de" {
   account_id   = "de-test-sa"
   display_name = "My DE TEST Service Account"
 #  project      = google_project.new_project.project_id  # Reference the new project ID
-  project = "de-gcp-201" 
+  project = "des-gcp-201" 
 }
 
 # Assign IAM role to the service account
@@ -49,13 +49,13 @@ resource "google_project_iam_member" "new-sa-role" {
   #project = google_project.new_project.project_id  # Reference the new project ID
   role    = "roles/owner"
   member  = "serviceAccount:${google_service_account.new_sa_de.email}"
-  project = "de-gcp-201" 
+  project = "des-gcp-201" 
 }
 
 
 # Assign BigQuery Admin role to the service account for the BigQuery dataset
 resource "google_project_iam_member" "bigquery_admins" {
-  project = "de-gcp-201"
+  project = "des-gcp-201"
   #project = google_project.new_project.project_id  # Reference the new project ID
   role    = "roles/bigquery.admin"
   member  = "serviceAccount:your-service-account@your-project-id.iam.gserviceaccount.com"
@@ -63,7 +63,7 @@ resource "google_project_iam_member" "bigquery_admins" {
 
 # Assign Composer Admin role to the service account for the Composer environment
 resource "google_project_iam_member" "composer_admins" {
-  project = "de-gcp-201"
+  project = "des-gcp-201"
   #project = google_project.new_project.project_id  # Reference the new project ID
   role    = "roles/composer.admin"
   member  = "serviceAccount:your-service-account@your-project-id.iam.gserviceaccount.com"
@@ -75,14 +75,14 @@ resource "google_bigquery_dataset" "new-de-datast" {
   dataset_id = "de_test_ds"
   location   = "US"
   #project    = google_project.new_project.project_id  # Reference the new project ID
-  project = "de-gcp-201" 
+  project = "des-gcp-201" 
 }
 
 # Create a Composer environment in the new project
 resource "google_composer_environment" "my_composer_env" {
   name    = "de-airflow-test"
   #project = google_project.new_project.project_id  # Reference the new project ID
-  project = "de-gcp-201" 
+  project = "des-gcp-201" 
   
 
   config {
