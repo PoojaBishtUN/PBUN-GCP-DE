@@ -71,12 +71,12 @@ resource "google_project_iam_member" "composer_admin" {
 
 
 # Create a BigQuery dataset in the new project
-resource "google_bigquery_dataset" "new-de-datast" {
-  dataset_id = "de_test_ds"
-  location   = "US"
-  #project    = google_project.new_project.project_id  # Reference the new project ID
-  project = "de-gcp-201" 
-}
+#resource "google_bigquery_dataset" "new-de-datast" {
+#  dataset_id = "de_test_ds"
+#  location   = "US"
+#  #project    = google_project.new_project.project_id  # Reference the new project ID
+#  project = "de-gcp-201" 
+#}
 
 resource "google_composer_environment" "my_composer_env" {
   name    = "de-airflow-test"
