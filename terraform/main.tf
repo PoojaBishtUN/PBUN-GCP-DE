@@ -1,6 +1,8 @@
 provider "google" {
   region = "asia-south2"
+  project = "de-gcp-201"  
 }
+
 
 # Create a new project
 resource "google_project" "new_project" {
@@ -30,6 +32,22 @@ resource "google_project_iam_member" "new-sa-role" {
   role    = "roles/owner"
   member  = "serviceAccount:${google_service_account.new_sa_de.email}"
 }
+
+
+# Enable necessary APIs for the project
+resource "google_project_service" "enabled_apis" {
+  for_each = toset([
+    "bigquery.googleapis.com",          # BigQuery API
+    "composer.googleapis.com",          # Composer API
+    "storage.googleapis.com",           # Cloud Storage API
+    "iam.googleapis.com",               # IAM API
+    "cloudresourcemanager.googleapis.com" # Resource Manager API
+  ])
+  project = google_project.new_project.project_id
+ 
+  service = each.key
+}
+
 
 # Create a BigQuery dataset in the new project
 resource "google_bigquery_dataset" "new-de-datast" {
