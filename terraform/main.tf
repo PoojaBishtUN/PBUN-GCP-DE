@@ -36,18 +36,18 @@ provider "google" {
 #  project = "de-gcp-201" 
 #}
 # Create a service account in the new project
-resource "google_service_account" "new_sa_de" {
-  account_id   = "de-test-sa"
-  display_name = "My DE TEST Service Account"
-  project      = "de-gcp-201"  # Reference the correct project ID
-}
+#resource "google_service_account" "new_sa_de" {
+#  account_id   = "de-test-sa"
+#  display_name = "My DE TEST Service Account"
+#  project      = "de-gcp-201"  # Reference the correct project ID
+#}
 
 # Assign IAM role to the service account
-resource "google_project_iam_member" "new_sa_role" {
-  role    = "roles/owner"
-  member  = "serviceAccount:${google_service_account.new_sa_de.email}"  # Correctly reference the email of the service account
-  project = "de-gcp-201"
-}
+#resource "google_project_iam_member" "new_sa_role" {
+#  role    = "roles/owner"
+#  member  = "serviceAccount:${google_service_account.new_sa_de.email}"  # Correctly reference the email of the service account
+#  project = "de-gcp-201"
+#}
 
 # Assign BigQuery Admin role to the service account for the BigQuery dataset
 resource "google_project_iam_member" "bigquery_admin" {
