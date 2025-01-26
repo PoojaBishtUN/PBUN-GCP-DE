@@ -61,6 +61,7 @@ resource "google_bigquery_dataset" "new-de-datast" {
   location   = "US"
   #project    = google_project.new_project.project_id  # Reference the new project ID
   project = "de-gcp-201" 
+  role    = "roles/bigquery.admin"
 }
 
 # Create a Composer environment in the new project
@@ -69,6 +70,7 @@ resource "google_composer_environment" "my_composer_env" {
   #project = google_project.new_project.project_id  # Reference the new project ID
   project = "de-gcp-201" 
   region  = "asia-south2"
+  role    = "roles/composer.admin"
 
   config {
     node_count = 3
