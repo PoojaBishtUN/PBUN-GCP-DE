@@ -88,10 +88,24 @@ resource "google_composer_environment" "my_composer_env" {
   config {
     software_config {image_version = "composer-2.10.2-airflow-2.10.2"}
 
-    # Node configuration (instead of node_count)
-    node_config {
-      machine_type = "n1-standard-1"  # Define the machine type for nodes
-      zone = "asia-south2-a"  # Define the zone for nodes
+    workloads_config {
+      # Define the machine type for the nodes
+      scheduler {
+        cpu = "1"  # Specify CPU for the scheduler node
+        memory_gb = 4  # Specify memory in GB for the scheduler node
+      }
+
+      # Worker node configuration
+      worker {
+        cpu = "2"  # Specify CPU for worker nodes
+        memory_gb = 8  # Specify memory in GB for worker nodes
+      }
+
+      # Web server configuration
+      web_server {
+        cpu = "1"  # Specify CPU for the web server node
+        memory_gb = 4  # Specify memory in GB for the web server node
+      }
     }
   }
 }
