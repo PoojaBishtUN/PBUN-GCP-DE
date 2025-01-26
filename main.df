@@ -1,0 +1,12 @@
+module "dataflow" {
+    source = "./module/terraform"
+    project_id = "de-gcp-201"
+    region = "us-central1"
+    zone= "us-central1-a"
+    bucket_name = "de-ops-201"
+    topic_name = "de-dataflow-pub"
+    subscription_name = "de-dataflow-sub"
+    dataset_id = "dataflowtest"
+    #table_conversations_name = "customer_conversations"
+    #table_orders_name = "customer_orders"
+}
