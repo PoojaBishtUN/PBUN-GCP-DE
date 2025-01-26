@@ -70,14 +70,21 @@ data "google_service_account" "existing_sa" {
 #  project = "de-gcp-201" 
 #}
 
-# Assign Composer Admin role to the service account for the Composer environment
+
+
+# Assign Composer Admin role to the service account for managing Composer environment
 resource "google_project_iam_member" "composer_admin" {
   project = "de-gcp-201"
   role    = "roles/composer.admin"
   member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
 }
 
-
+# Assign Composer Service Agent role to the service account for accessing IAM policies
+resource "google_project_iam_member" "composer_service_agent" {
+  project = "de-gcp-201"
+  role    = "roles/composer.ServiceAgentV2Ext"
+  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
+}
 
 
 
