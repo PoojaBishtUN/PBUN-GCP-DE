@@ -11,8 +11,8 @@ resource "google_project" "new_project" {
 }
 
 # Create a storage bucket in the new project
-resource "google_storage_bucket" "new_bkt_tst" {
-  name     = "de-test-bucket"
+resource "google_storage_bucket" "new_bkt_tstst" {
+  name     = "de-test-bkts"
   location = "US"
   project  = google_project.new_project.project_id  # Reference the new project ID
 }
