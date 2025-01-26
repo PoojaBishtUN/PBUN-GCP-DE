@@ -7,6 +7,11 @@ module "dataflow" {
     topic_name = "de-dataflow-pub"
     subscription_name = "de-dataflow-sub"
     dataset_id = "dataflowtest"
-    #table_conversations_name = "customer_conversations"
-    #table_orders_name = "customer_orders"
+    table_Netflix_Category_Analysis = "Netflix_Category_Analysis"
+    table_Netflix_Regional_Analysis = "Netflix_Regional_Analysis"
+    table_Netflix_Release_Trends = "Netflix_Release_Trends"
+    table_Netflix_Duration_Transformation = "Netflix_Duration_Transformation"
+    table_Netflix_Cast_And_Director_Insights = "Netflix_Cast_And_Director_Insights"
+    table_Netflix_Content_Rating_Analysis = "Netflix_Content_Rating_Analysis"
+    table_Netflix_Top_Producers = "Netflix_Top_Producers"
 }

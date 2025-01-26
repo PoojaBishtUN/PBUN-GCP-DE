@@ -41,14 +41,45 @@ variable "dataset_id" {
   default     = "your-dataset-name"
 }
 
-#variable "table_conversations_name" {
-#  description = "The name of the BigQuery conversations table"
-#  type        = string
-#  default     = "conversations"
-#}
+variable "table_Netflix_Category_Analysis" {
+  description = "The name of the BigQuery conversations table"
+  type        = string
+  default     = "D_Netflix_Category_Analysis"
+}
 
-#variable "table_orders_name" {
-#  description = "The name of the BigQuery orders table"
-#  type        = string
-#  default     = "orders"
-#}
+variable "table_Netflix_Regional_Analysis" {
+  description = "The name of the BigQuery orders table"
+  type        = string
+  default     = "D_Netflix_Regional_Analysis"
+}
+
+variable "table_Netflix_Release_Trends" {
+  description = "The name of the BigQuery orders table"
+  type        = string
+  default     = "D_Netflix_Release_Trends"
+}
+
+variable "table_Netflix_Duration_Transformation" {
+  description = "The name of the BigQuery orders table"
+  type        = string
+  default     = "D_Netflix_Duration_Transformation"
+}
+
+variable "table_Netflix_Cast_And_Director_Insights" {
+  description = "The name of the BigQuery orders table"
+  type        = string
+  default     = "D_Netflix_Cast_And_Director_Insights"
+}
+
+variable "table_Netflix_Content_Rating_Analysis" {
+  description = "The name of the BigQuery orders table"
+  type        = string
+  default     = "D_Netflix_Content_Rating_Analysis"
+}
+
+variable "table_Netflix_Top_Producers" {
+  description = "The name of the BigQuery orders table"
+  type        = string
+  default     = "D_Netflix_Top_Producers"
+}
+
