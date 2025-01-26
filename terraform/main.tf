@@ -9,7 +9,7 @@ resource "google_project" "new_project" {
   name            = "DE Project"
   project_id      = "de-gcp-201"  # Ensure this is globally unique
   billing_account = "01C199-5D99B9-8C1FB1"   # Replace with your billing account ID
-  # Remove org_id or provide the correct organization ID if needed
+  deletion_policy = "ABANDON"  # Ensure this is set correctly, not "PREVENT"
 }
 
 # Create a storage bucket in the new project
