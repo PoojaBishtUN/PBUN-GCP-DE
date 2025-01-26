@@ -7,10 +7,26 @@ provider "google" {
 # Create a new project
 resource "google_project" "new_project" {
   name            = "DE Project"
-  project_id      = "de-gcpp-201"  # Ensure this is globally unique
+  project_id      = "det-gcpp-201"  # Ensure this is globally unique
   billing_account = "01C199-5D99B9-8C1FB1"   # Replace with your billing account ID
   deletion_policy = "ABANDON"  # Ensure this is set correctly, not "PREVENT"
 }
+
+# Enable necessary APIs for the project
+resource "google_project_service" "enabled_apis" {
+  for_each = toset([
+    "bigquery.googleapis.com",          # BigQuery API
+    "composer.googleapis.com",          # Cloud Composer API
+    "storage.googleapis.com",           # Cloud Storage API
+    "iam.googleapis.com",               # IAM API
+    "cloudresourcemanager.googleapis.com" # Resource Manager API
+  ])
+  project = google_project.new_project.project_id
+ 
+  service = each.key
+}
+
+
 
 # Create a storage bucket in the new project
 resource "google_storage_bucket" "new_bkt_tstst" {
@@ -34,19 +50,6 @@ resource "google_project_iam_member" "new-sa-role" {
 }
 
 
-# Enable necessary APIs for the project
-resource "google_project_service" "enabled_apis" {
-  for_each = toset([
-    "bigquery.googleapis.com",          # BigQuery API
-    "composer.googleapis.com",          # Cloud Composer API
-    "storage.googleapis.com",           # Cloud Storage API
-    "iam.googleapis.com",               # IAM API
-    "cloudresourcemanager.googleapis.com" # Resource Manager API
-  ])
-  project = google_project.new_project.project_id
- 
-  service = each.key
-}
 
 
 # Create a BigQuery dataset in the new project
