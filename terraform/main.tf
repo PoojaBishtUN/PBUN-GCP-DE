@@ -5,7 +5,7 @@ provider "google" {
 # Create a new project
 resource "google_project" "new_project" {
   name            = "My New Project"
-  project_id      = "data-engineering-20361"  # Ensure this is globally unique
+  project_id      = "data-engineering-203610"  # Ensure this is globally unique
   billing_account = "01C199-5D99B9-8C1FB1"   # Replace with your billing account ID
   # Remove org_id or provide the correct organization ID if needed
 }
