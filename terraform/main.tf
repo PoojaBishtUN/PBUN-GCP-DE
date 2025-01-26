@@ -29,28 +29,28 @@ provider "google" {
 
 
 # Create a storage bucket in the new project
-resource "google_storage_bucket" "new_bkt_tstst" {
-  name     = "de-gcp-201"
-  location = "US"
+#resource "google_storage_bucket" "new_bkt_tstst" {
+#  name     = "de-gcp-201"
+#  location = "US"
  # project  = google_project.new_project.project_id  # Reference the new project ID
-  project = "de-gcp-201" 
-}
+#  project = "de-gcp-201" 
+#}
 
 # Create a service account in the new project
-resource "google_service_account" "new_sa_de" {
-  account_id   = "de-test-sa"
-  display_name = "My DE TEST Service Account"
+#resource "google_service_account" "new_sa_de" {
+#  account_id   = "de-test-sa"
+#  display_name = "My DE TEST Service Account"
 #  project      = google_project.new_project.project_id  # Reference the new project ID
-  project = "de-gcp-201" 
-}
+#  project = "de-gcp-201" 
+#}
 
 # Assign IAM role to the service account
-resource "google_project_iam_member" "new-sa-role" {
-  #project = google_project.new_project.project_id  # Reference the new project ID
-  role    = "roles/owner"
-  member  = "serviceAccount:${google_service_account.new_sa_de.email}"
-  project = "de-gcp-201" 
-}
+#resource "google_project_iam_member" "new-sa-role" {
+#  #project = google_project.new_project.project_id  # Reference the new project ID
+#  role    = "roles/owner"
+#  member  = "serviceAccount:${google_service_account.new_sa_de.email}"
+#  project = "de-gcp-201" 
+#}
 
 
 # Assign BigQuery Admin role to the service account for the BigQuery dataset
