@@ -28,7 +28,7 @@ resource "google_service_account" "new_sa_de" {
 resource "google_project_iam_member" "new-sa-role" {
   project = google_project.new_project.project_id  # Reference the new project ID
   role    = "roles/owner"
-  member  = "serviceAccount:${google_service_account.my_service_account.email}"
+  member  = "serviceAccount:${google_service_account.new_sa_de.email}"
 }
 
 # Create a BigQuery dataset in the new project
