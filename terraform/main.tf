@@ -20,7 +20,7 @@ resource "google_project_iam_member" "sa_role" {
 }
 
 resource "google_bigquery_dataset" "my_dataset" {
-  dataset_id = "de-test-ds"
+  dataset_id = "de_test_ds"
   location   = "US"
 }
 
@@ -29,7 +29,7 @@ resource "google_composer_environment" "my_composer_env" {
   region = "asia-south2"
 
   config {
-    node_count = 1
+    node_count = 3
     software_config {image_version = "composer-2.0.0-airflow-2.1.0"}
   }
 }
