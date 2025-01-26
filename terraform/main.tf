@@ -49,18 +49,24 @@ provider "google" {
 #  project = "de-gcp-201"
 #}
 
+# Reference the existing service account (manually created)
+data "google_service_account" "existing_sa" {
+  account_id = "de-test-sa"  # Use the actual account ID of the manually created service account
+  project    = "de-gcp-201"   # Specify the project where the service account exists
+}
+
 # Assign BigQuery Admin role to the service account for the BigQuery dataset
 resource "google_project_iam_member" "bigquery_admin" {
   project = "de-gcp-201"
   role    = "roles/bigquery.admin"
-  member  = "serviceAccount:${google_service_account.new_sa_de.email}"  # Reference the created service account's email
+  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
 }
 
 # Assign Composer Admin role to the service account for the Composer environment
 resource "google_project_iam_member" "composer_admin" {
   project = "de-gcp-201"
   role    = "roles/composer.admin"
-  member  = "serviceAccount:${google_service_account.new_sa_de.email}"  # Reference the created service account's email
+  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
 }
 
 
