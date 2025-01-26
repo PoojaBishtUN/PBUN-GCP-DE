@@ -35,49 +35,49 @@ resource "google_bigquery_dataset" "dataset" {
 }
 
 
-resource "google_bigquery_table" "Netflix_Category_Analysis_" {
+resource "google_bigquery_table" "Netflix_Category_Analysis_m" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_Netflix_Category_Analysis
   description = "This is a dynamically schema-inferred Netflix_Category_Analysis"
 }
 
-resource "google_bigquery_table" "Netflix_Regional_Analysis_" {
+resource "google_bigquery_table" "Netflix_Regional_Analysis_m" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_Netflix_Regional_Analysis
   description = "This is a dynamically schema-inferred table"
 }
 
-resource "google_bigquery_table" "Netflix_Regional_Analysis_" {
+resource "google_bigquery_table" "Netflix_Regional_Analysis_m" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_Netflix_Regional_Analysis
   description = "This is a dynamically schema-inferred table"
 }
 
-resource "google_bigquery_table" "Netflix_Release_Trends_" {
+resource "google_bigquery_table" "Netflix_Release_Trends_m" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_Netflix_Release_Trends
   description = "This is a dynamically schema-inferred table"
 }
 
-resource "google_bigquery_table" "Netflix_Duration_Transformation_" {
+resource "google_bigquery_table" "Netflix_Duration_Transformation_m" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_Netflix_Duration_Transformation
   description = "This is a dynamically schema-inferred table"
 }
 
-resource "google_bigquery_table" "Netflix_Cast_And_Director_Insights_" {
+resource "google_bigquery_table" "Netflix_Cast_And_Director_Insights_m" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_Netflix_Cast_And_Director_Insights
   description = "This is a dynamically schema-inferred table"
 }
 
-resource "google_bigquery_table" "Netflix_Content_Rating_Analysis_" {
+resource "google_bigquery_table" "Netflix_Content_Rating_Analysis_m" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_Netflix_Content_Rating_Analysis
   description = "This is a dynamically schema-inferred table"
 }
 
-resource "google_bigquery_table" "Netflix_Top_Producers_" {
+resource "google_bigquery_table" "Netflix_Top_Producers_m" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_Netflix_Top_Producers
   description = "This is a dynamically schema-inferred table"
