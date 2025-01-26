@@ -53,6 +53,19 @@ resource "google_project_iam_member" "new-sa-role" {
 }
 
 
+# Assign BigQuery Admin role to the service account for the BigQuery dataset
+resource "google_project_iam_member" "bigquery_admins" {
+  project = "de-gcp-201"
+  role    = "roles/bigquery.admin"
+  member  = "serviceAccount:your-service-account@your-project-id.iam.gserviceaccount.com"
+}
+
+# Assign Composer Admin role to the service account for the Composer environment
+resource "google_project_iam_member" "composer_admins" {
+  project = "de-gcp-201"
+  role    = "roles/composer.admin"
+  member  = "serviceAccount:your-service-account@your-project-id.iam.gserviceaccount.com"
+}
 
 
 # Create a BigQuery dataset in the new project
@@ -61,7 +74,6 @@ resource "google_bigquery_dataset" "new-de-datast" {
   location   = "US"
   #project    = google_project.new_project.project_id  # Reference the new project ID
   project = "de-gcp-201" 
-  role    = "roles/bigquery.admin"
 }
 
 # Create a Composer environment in the new project
@@ -69,7 +81,6 @@ resource "google_composer_environment" "my_composer_env" {
   name    = "de-airflow-test"
   #project = google_project.new_project.project_id  # Reference the new project ID
   project = "de-gcp-201" 
-  region  = "asia-south2"
   role    = "roles/composer.admin"
 
   config {
