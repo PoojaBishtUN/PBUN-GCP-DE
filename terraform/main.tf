@@ -46,8 +46,6 @@ resource "google_composer_environment" "my_composer_env" {
 
   config {
     node_count = 3
-    software_config {
-      image_version = "composer-2.0.0-airflow-2.1.0"
-    }
+    software_config {image_version = "composer-2.0.0-airflow-2.1.0"}
   }
 }
