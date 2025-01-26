@@ -31,7 +31,7 @@ resource "google_bigquery_dataset" "dataset" {
   dataset_id                  = var.dataset_id
   friendly_name               = "dt_chat"
   location                    = "US"
-  default_table_expirations = null
+  default_table_expiration_ms = null
 }
 
 
