@@ -50,10 +50,10 @@ provider "google" {
 #}
 
 # Reference the existing service account (manually created)
-#data "google_service_account" "existing_sa" {
-#  account_id = "de-test-sa"  # Use the actual account ID of the manually created service account
-#  project    = "de-gcp-201"   # Specify the project where the service account exists
-#}
+data "google_service_account" "existing_sa" {
+  account_id = "de-test-sa"  # Use the actual account ID of the manually created service account
+  project    = "de-gcp-201"   # Specify the project where the service account exists
+}
 
 # Assign BigQuery Admin role to the service account for the BigQuery dataset
 #resource "google_project_iam_member" "bigquery_admin" {
@@ -62,15 +62,6 @@ provider "google" {
 #  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
 #}
 
-# Assign Composer Admin role to the service account for the Composer environment
-#resource "google_project_iam_member" "composer_admin" {
-#  project = "de-gcp-201"
-#  role    = "roles/composer.admin"
-#  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
-#}
-
-
-
 # Create a BigQuery dataset in the new project
 #resource "google_bigquery_dataset" "new-de-datast" {
 #  dataset_id = "de_test_ds"
@@ -78,6 +69,17 @@ provider "google" {
 #  #project    = google_project.new_project.project_id  # Reference the new project ID
 #  project = "de-gcp-201" 
 #}
+
+# Assign Composer Admin role to the service account for the Composer environment
+resource "google_project_iam_member" "composer_admin" {
+  project = "de-gcp-201"
+  role    = "roles/composer.admin"
+  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
+}
+
+
+
+
 
 # Create Cloud Composer environment
 resource "google_composer_environment" "my_composer_env" {
