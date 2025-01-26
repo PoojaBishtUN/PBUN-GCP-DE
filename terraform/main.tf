@@ -50,24 +50,24 @@ provider "google" {
 #}
 
 # Reference the existing service account (manually created)
-data "google_service_account" "existing_sa" {
-  account_id = "de-test-sa"  # Use the actual account ID of the manually created service account
-  project    = "de-gcp-201"   # Specify the project where the service account exists
-}
+#data "google_service_account" "existing_sa" {
+#  account_id = "de-test-sa"  # Use the actual account ID of the manually created service account
+#  project    = "de-gcp-201"   # Specify the project where the service account exists
+#}
 
 # Assign BigQuery Admin role to the service account for the BigQuery dataset
-resource "google_project_iam_member" "bigquery_admin" {
-  project = "de-gcp-201"
-  role    = "roles/bigquery.admin"
-  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
-}
+#resource "google_project_iam_member" "bigquery_admin" {
+#  project = "de-gcp-201"
+#  role    = "roles/bigquery.admin"
+#  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
+#}
 
 # Assign Composer Admin role to the service account for the Composer environment
-resource "google_project_iam_member" "composer_admin" {
-  project = "de-gcp-201"
-  role    = "roles/composer.admin"
-  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
-}
+#resource "google_project_iam_member" "composer_admin" {
+#  project = "de-gcp-201"
+#  role    = "roles/composer.admin"
+#  member  = "serviceAccount:${data.google_service_account.existing_sa.email}"  # Reference the existing service account's email
+#}
 
 
 
@@ -79,14 +79,20 @@ resource "google_project_iam_member" "composer_admin" {
 #  project = "de-gcp-201" 
 #}
 
+# Create Cloud Composer environment
 resource "google_composer_environment" "my_composer_env" {
   name    = "de-airflow-test"
-  project = "de-gcp-201"
+  project = "de-gcp-201"  # Use the correct project ID
   region  = "asia-south2"
 
   config {
-    node_count = 3
-    software_config {image_version = "composer-3-airflow-2.10.2"}
+    software_config {image_version = "composer-2.10.2-airflow-2.10.2"}
+
+    # Node configuration (instead of node_count)
+    node_config {
+      machine_type = "n1-standard-1"  # Define the machine type for nodes
+      zone = "asia-south2-a"  # Define the zone for nodes
+    }
   }
 }
 
