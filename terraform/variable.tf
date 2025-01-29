@@ -41,6 +41,13 @@ variable "dataset_id" {
   default     = "your-dataset-name"
 }
 
+variable "Source_table" {
+  description = "The name of the BigQuery conversations table"
+  type        = string
+  default     = "D_Source"
+}
+
+
 variable "table_Netflix_Category_Analysis" {
   description = "The name of the BigQuery conversations table"
   type        = string

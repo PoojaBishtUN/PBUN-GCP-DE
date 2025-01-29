@@ -34,6 +34,11 @@ resource "google_bigquery_dataset" "dataset" {
   default_table_expiration_ms = null
 }
 
+resource "google_bigquery_table" "Source" {
+  dataset_id = google_bigquery_dataset.dataset.dataset_id
+  table_id   = var.Source_table
+  description = "This is a dynamically schema-inferred Netflix_Category_Analysis"
+}
 
 resource "google_bigquery_table" "Netflix_Category_Analysis_" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id

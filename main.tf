@@ -7,6 +7,7 @@ module "dataflow" {
     topic_name = "de-dataflow-pub"
     subscription_name = "de-dataflow-sub"
     dataset_id = "dataflowtest"
+    Source_table = "Source"
     table_Netflix_Category_Analysis = "Netflix_Category_Analysis"
     table_Netflix_Regional_Analysis = "Netflix_Regional_Analysis"
     table_Netflix_Release_Trends = "Netflix_Release_Trends"
