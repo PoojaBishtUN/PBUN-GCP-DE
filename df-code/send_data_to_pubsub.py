@@ -19,7 +19,7 @@ if topic is None:
 storage_client = storage.Client()
 
 #Specify the bucket and file names
-bucket_name = 'de-ops-201"'
+bucket_name = 'de-ops-201'
 file_name = 'netflix_titles.csv'
 
 #Get the bucket and blob
