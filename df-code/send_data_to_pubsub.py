@@ -27,7 +27,7 @@ bucket = storage_client.bucket(bucket_name)
 blob = bucket.blob(file_name)
 
 #Read the file line by line
-with blob.open("r") as f_in:
+with blob.open("r", encoding="utf-8", errors="ignore") as f_in:
     for line in f_in:
         #Data must be a bytestring
         data = line.encode('utf-8')
